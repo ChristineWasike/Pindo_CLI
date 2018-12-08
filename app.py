@@ -8,7 +8,7 @@ def ping():
     return jsonify({
         'status': 200,
         'message': 'success',
-        'payload': 'ping'
+        'payload': 'pong'
     })
 
 if __name__ == '__main__':
