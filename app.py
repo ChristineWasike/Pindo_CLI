@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 import requests
 from requests.auth import HTTPBasicAuth
 
@@ -38,6 +38,12 @@ def ping():
         'message': 'success',
         'payload': 'pong'
     })
+
+from . import Send
+    @app.route('/send', methods=['POST'])
+    def sms():
+        data = request.get_json()
+        send = Send(data['token'], data['to'], data['text'], data['sender'])
 
 if __name__ == '__main__':
     app.run(debug = True, host = '0.0.0.0')
